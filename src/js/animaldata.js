@@ -11,7 +11,7 @@ const data = [
 	},
 	{
 		id: 2,
-		name_german: "Eichhörnchen",
+		name_german: "Eichhoernchen",
 		name: "Squirrel",
 		hint_1: "Bewegt sich flink zwischen verschiedenen Ebenen.",
 		hint_2: "Sammelt Nahrung und legt Vorräte für karge Zeiten an.",
@@ -71,7 +71,7 @@ const data = [
 	},
 	{
 		id: 8,
-		name_german: "Krähe",
+		name_german: "Kraehe",
 		name: "Crow",
 		hint_1: "Besonders intelligent und sehr anpassungsfähig.",
 		hint_2: "Kann Werkzeuge nutzen und Rätsel lösen.",
@@ -151,7 +151,7 @@ const data = [
 	},
 	{
 		id: 16,
-		name_german: "Waschbär",
+		name_german: "Waschbaer",
 		name: "Raccoon",
 		hint_1: "Sehr geschickt und anpassungsfähig, oft in der Nähe von Siedlungen zu finden.",
 		hint_2: "Besitzt geschickte Vorderpfoten, mit denen Nahrung ertastet wird.",
@@ -180,3 +180,5 @@ const data = [
 		Paw: "Große, kräftige Pfote mit markanten Krallen und sichtbaren Ballen.",
 	},
 ];
+
+export default data;

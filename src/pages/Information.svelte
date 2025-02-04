@@ -113,7 +113,7 @@
 		border-radius: 10px;
 		text-align: center;
 		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-		font-family: Arial, sans-serif;
+		font-family: Merriweather, sans-serif;
 		color: #fff;
 	}
 

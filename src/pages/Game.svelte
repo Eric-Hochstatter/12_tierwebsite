@@ -1,4 +1,5 @@
 <script>
+	import data from "../js/animaldata.js";
 	import Card from "../components/Card.svelte";
 	let hints = [
 		"Hier soll später ein Hinweis stehen, der einem die Fährte erklärt",
@@ -6,6 +7,7 @@
 		"Dies ist der dritte Hinweis",
 	];
 
+	let animals = data;
 	let currentHintIndex = 0;
 	let hintChanged = false;
 
@@ -40,10 +42,10 @@
 
 	<!-- Raster mit Kacheln -->
 	<div class="grid-container">
-		{#each items as item, index}
+		{#each animals as animal, index}
 			<!-- svelte-ignore a11y_click_events_have_key_events -->
 			<!-- svelte-ignore a11y_no_static_element_interactions -->
-			<Card></Card>
+			<Card animal={animal}></Card>
 		{/each}
 	</div>
 </div>
@@ -91,6 +93,7 @@
 	}
 	.hint p {
 		margin-right: 1rem;
+		margin-left: 1rem;
 	}
 
 	.hint button {

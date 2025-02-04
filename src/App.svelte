@@ -6,7 +6,7 @@
 	import Impressum from "./pages/Impressum.svelte";
 
 	// import CardOverview from "./pages/CardOverview.svelte";
-
+	
 	const routes = {
 		"/": LandingPage,
 		"/game": Game,
@@ -59,6 +59,11 @@
     overflow-x: hidden; 
   } */
 
+    body {
+    margin: 0;
+	font-family: Arial, Helvetica, sans-serif;
+    background: #252525;
+  }
 	.header {
 		display: grid;
 		grid-template-columns: repeat(10, 1fr);
