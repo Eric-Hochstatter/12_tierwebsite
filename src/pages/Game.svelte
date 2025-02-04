@@ -1,4 +1,5 @@
 <script>
+	import Card from "../components/Card.svelte";
 	let hints = [
 		"Hier soll später ein Hinweis stehen, der einem die Fährte erklärt",
 		"Dies ist der zweite Hinweis",
@@ -17,14 +18,8 @@
 		currentHintIndex = (currentHintIndex - 1 + hints.length) % hints.length;
 	}
 
-	let visibleItems = Array(18).fill(true);
-	let blackItems = Array(18).fill(false);
+	let items = Array(18);
 
-	function toggleItemColor(index) {
-		if (blackItems.filter(Boolean).length < blackItems.length - 1) {
-			blackItems[index] = !blackItems[index];
-		}
-	}
 	// Falls du dynamische Daten später hinzufügen möchtest, kannst du sie hier definieren
 </script>
 
@@ -45,16 +40,10 @@
 
 	<!-- Raster mit Kacheln -->
 	<div class="grid-container">
-		{#each visibleItems as visible, index}
-			{#if visible}
-				<!-- svelte-ignore a11y_click_events_have_key_events -->
-				<!-- svelte-ignore a11y_no_static_element_interactions -->
-				<div
-					class="grid-item"
-					on:click={() => toggleItemColor(index)}
-					style="background: {blackItems[index] ? '#000' : '#fff'};"
-				></div>
-			{/if}
+		{#each items as item, index}
+			<!-- svelte-ignore a11y_click_events_have_key_events -->
+			<!-- svelte-ignore a11y_no_static_element_interactions -->
+			<Card></Card>
 		{/each}
 	</div>
 </div>
@@ -117,24 +106,6 @@
 		/* width: 100%; */
 		max-width: 800px;
 	}
-
-	/* Einzelne Kachel */
-	.grid-item {
-		background: #e0e0e0;
-		border-radius: 0.5rem;
-		height: 6rem;
-		width: 6rem;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		cursor: pointer;
-		transition: background 0.3s ease;
-	}
-
-	.grid-item:hover {
-		background: #000;
-	}
-
 	/* .grid-item button {
     display: none;
   } */
