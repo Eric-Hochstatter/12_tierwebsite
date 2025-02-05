@@ -1,57 +1,55 @@
 <script>
 	export let animal;
-	let isclicked = false;
-	function toggleItemColor(){
-		isclicked = !isclicked;
+	let isClicked = false;
+
+	// Klick-Funktion: Schaltet den Status um (toggle)
+	function toggleCard() {
+		isClicked = !isClicked;
 	}
-	let imageUrl = `/images/card-images/${animal.name_german}.png`;
 </script>
 
-<div class="grid-item" on:click={toggleItemColor} class:isclicked>
-	<img src="{imageUrl}" alt="{animal.name_german}" />
-	<p>{animal.name_german}</p>
+<div class="grid-item {isClicked ? 'blackout' : ''}" on:click={toggleCard}>
+	{#if !isClicked}
+		<img src={`/images/card-images/${animal.name_german}.png`} alt="{animal.name_german}" />
+		<p>{animal.name_german}</p>
+	{/if}
 </div>
 
 <style>
-
-	
-
 	.grid-item {
-		border-radius: 0.5rem;
-		height: 6rem;
-		width: 6rem;
 		display: flex;
-		flex-direction: column;
 		justify-content: center;
 		align-items: center;
+		flex-direction: column;
+		width: 6.5rem;
+		height: 7rem;
+		border-radius: 0.5rem;
 		cursor: pointer;
-		transition: background 0.3s ease;
 		background: #e0e0e0;
-		text-align: center;
-		padding: 0.5rem;
+		transition: background 0.3s ease-in-out;
 	}
 
 	.grid-item img {
-		width: 100%;
-		height: auto;
-		max-height: 4rem; /* Damit das Bild nicht zu groß wird */
-		object-fit: contain;
-		border-radius: 0.25rem;
-	}
-	.grid-item p {
-		margin: 0.7rem 0 0;
-		font-size: 0.9rem;
-		color: black;
-		font-weight: regular;
-	}
+        width: 80%;
+        height: auto;
+        max-height: 4rem; /* Damit das Bild nicht zu groß wird */
+        object-fit: contain;
+        border-radius: 0.5rem;
+    }
+    .grid-item p {
+        margin: 0.7rem 0 0;
+        font-size: 0.9rem;
+        color: black;
+        font-weight: regular;
+    }
 
-	/* Wenn das Element geklickt wurde */
-	.grid-item.isclicked {
+	/* Wenn die Karte geklickt wurde, wird sie komplett schwarz */
+	.grid-item.blackout {
 		background: black;
-		color: white;
 	}
 
-	.grid-item.isclicked p {
-		color: white;
+	.grid-item.blackout img,
+	.grid-item.blackout p {
+		display: none;
 	}
 </style>
