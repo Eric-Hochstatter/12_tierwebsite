@@ -13,6 +13,9 @@
 </div>
 
 <style>
+
+	
+
 	.grid-item {
 		border-radius: 0.5rem;
 		height: 6rem;
@@ -36,10 +39,10 @@
 		border-radius: 0.25rem;
 	}
 	.grid-item p {
-		margin: 0.3rem 0 0;
+		margin: 0.7rem 0 0;
 		font-size: 0.9rem;
 		color: black;
-		font-weight: bold;
+		font-weight: regular;
 	}
 
 	/* Wenn das Element geklickt wurde */
