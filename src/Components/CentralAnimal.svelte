@@ -1,15 +1,12 @@
 <script>
-	// Props für das Tier-Array
-	export let animals = [];
-
-	// Zufälliges Start-Tier wählen
-	let centralAnimal = animals[Math.floor(Math.random() * animals.length)];
+	// Das zentrale Tier wird von `Game.svelte` gesetzt
+	export let centralAnimal;
 
 	// Hinweise aus den Feldern extrahieren
 	let hints = [
-		centralAnimal.hint_1 || "Kein Hinweis verfügbar",
-		centralAnimal.hint_2 || "Kein Hinweis verfügbar",
-		centralAnimal.hint_3 || "Kein Hinweis verfügbar"
+		centralAnimal?.hint_1 || "Kein Hinweis verfügbar",
+		centralAnimal?.hint_2 || "Kein Hinweis verfügbar",
+		centralAnimal?.hint_3 || "Kein Hinweis verfügbar"
 	];
 
 	let currentHintIndex = 0;
@@ -23,28 +20,14 @@
 		currentHintIndex = (currentHintIndex - 1 + hints.length) % hints.length;
 	}
 
-	// Funktion zum Ändern des zentralen Tieres (per Event nach außen geben)
-	function setCentralAnimal(animal) {
-		centralAnimal = animal;
-		hints = [
-			animal.hint_1 || "Kein Hinweis verfügbar",
-			animal.hint_2 || "Kein Hinweis verfügbar",
-			animal.hint_3 || "Kein Hinweis verfügbar"
-		];
-		currentHintIndex = 0;
-
-		// Event an übergeordnete Komponente senden
-		dispatch("update", { centralAnimal });
-	}
-
-	import { createEventDispatcher } from "svelte";
-	const dispatch = createEventDispatcher();
+	// Debugging, um sicherzustellen, dass `centralAnimal` richtig ankommt
+	console.log("🐾 CentralAnimal geladen:", centralAnimal);
 </script>
 
 <div class="central-container">
 	<!-- Zentrales Symbol mit Bild -->
 	<div class="central-icon">
-		<img src={`/images/footprint-images/${centralAnimal.name_german}-Faehrte.png`} alt="{centralAnimal.name_german}" />
+		<img src={`/images/footprint-images/${centralAnimal?.name_german}-Faehrte.png`} alt="{centralAnimal?.name_german}" />
 	</div>
 
 	<!-- Hinweis-Container -->

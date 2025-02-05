@@ -1,10 +1,11 @@
 <script>
 	export let animal;
+	export let onToggle; // Neue Funktion als Prop, um das Umschalten mitzuteilen
 	let isClicked = false;
 
-	// Klick-Funktion: Schaltet den Status um (toggle)
 	function toggleCard() {
 		isClicked = !isClicked;
+		onToggle(animal, isClicked); // Informiere die Hauptkomponente
 	}
 </script>
 
@@ -21,8 +22,8 @@
 		justify-content: center;
 		align-items: center;
 		flex-direction: column;
-		width: 6.5rem;
-		height: 7rem;
+		width: 6rem;
+		height: 6.5rem;
 		border-radius: 0.5rem;
 		cursor: pointer;
 		background: #e0e0e0;
@@ -34,7 +35,7 @@
         height: auto;
         max-height: 4rem; /* Damit das Bild nicht zu groß wird */
         object-fit: contain;
-        border-radius: 0.5rem;
+        border-radius: 0.25rem;
     }
     .grid-item p {
         margin: 0.7rem 0 0;
