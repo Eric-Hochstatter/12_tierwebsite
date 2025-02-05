@@ -40,31 +40,28 @@
 </header>
 
 <main>
+	
 	<Router {routes} />
 </main>
 
 <footer></footer>
 
 <style>
+ 
 	/* Box-Sizing auf border-box setzen */
 	* {
 		box-sizing: border-box;
+		font-family: 'Merriweather', sans-serif;
 	}
 
-	/* Margin und Padding für Body und HTML auf Null setzen */
-	/* html, body {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    overflow-x: hidden; 
-  } */
 
-    body {
+    /* body {
     margin: 0;
-	font-family: Arial, Helvetica, sans-serif;
+	font-family: 'Merriweather';
     background: #252525;
-  }
+  } */
 	.header {
+		/* font-family: 'Merriweather', sans-serif; */
 		display: grid;
 		grid-template-columns: repeat(10, 1fr);
 		justify-content: space-between;
