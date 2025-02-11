@@ -7,8 +7,14 @@
 		isClicked = !isClicked;
 		onToggle(animal, isClicked); // Informiere die Hauptkomponente
 	}
+
+	export function makeCardVisible() {
+		isClicked = false;
+	}
 </script>
 
+<!-- svelte-ignore a11y_click_events_have_key_events -->
+<!-- svelte-ignore a11y_no_static_element_interactions -->
 <div class="grid-item {isClicked ? 'blackout' : ''}" on:click={toggleCard}>
 	{#if !isClicked}
 		<img src={`/images/card-images/${animal.name_german}.png`} alt="{animal.name_german}" />

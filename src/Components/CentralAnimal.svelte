@@ -3,13 +3,16 @@
 	export let centralAnimal;
 
 	// Hinweise aus den Feldern extrahieren
-	let hints = [
+	let hints = [];
+
+	let currentHintIndex = 0;
+
+	// Reaktionsblock, um das hints-Array zu aktualisieren, wenn sich centralAnimal ändert
+	$: hints = [
 		centralAnimal?.hint_1 || "Kein Hinweis verfügbar",
 		centralAnimal?.hint_2 || "Kein Hinweis verfügbar",
 		centralAnimal?.hint_3 || "Kein Hinweis verfügbar"
 	];
-
-	let currentHintIndex = 0;
 
 	// Funktionen zum Wechseln der Hinweise
 	function nextHint() {
@@ -21,7 +24,7 @@
 	}
 
 	// Debugging, um sicherzustellen, dass `centralAnimal` richtig ankommt
-	console.log("🐾 CentralAnimal geladen:", centralAnimal);
+	console.log("🐾 CentralAnimal geladen:", centralAnimal, hints);
 </script>
 
 <div class="central-container">
