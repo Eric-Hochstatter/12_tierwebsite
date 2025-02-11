@@ -4,29 +4,45 @@
 	import "ldrs/ring";
 
 	let result = null;
+	let showInitialPopup = true; // Initiales Popup anzeigen
 
 	async function handleOnClick() {
 		result = fetchWikipediaArticle("Fährtenlesen");
 		console.log(result);
 	}
+
+	// Initiales Popup schließen
+	function closeInitialPopup() {
+		showInitialPopup = false;
+	}
 </script>
 
 <!-- Hauptinhalt -->
 <div class="main-content">
-	<div class="central-icon">
+	<!-- <div class="central-icon">
 		<img src="/assets/track-icon.png" alt="Tierspuren" />
-	</div>
+	</div> -->
 
 	<div class="content-grid">
 		<!-- Karte 1 -->
 		<div class="card">
-			<h2>Um welche Fährte handelt es sich?</h2>
-			<p>Hier stehen jetzt voll die nützlichen Hinweise zu dem Thema</p>
+			<h2>Tipps zum Fährtenlesen</h2>
+			<h3>Schau dir die Form an 🧐</h3>
+						<p>
+							Sind die Spuren rund oder eher länglich? Haben sie
+							Krallen oder nicht? Zum Beispiel haben Hundespuren
+							Krallen, Katzenspuren aber nicht!
+						</p>
+						<h3>Zähle die Zehen 🐾</h3>
+						<p>
+							Manche Tiere haben vier Zehen (wie Füchse und
+							Hunde), andere fünf (wie Dachs oder Waschbär).
+						</p>
 		</div>
 
 		<!-- Karte 2 -->
 		<div class="card">
-			<h2>Tipps</h2>
+			<h2>Was sind Fährten?</h2>
 
 			<!-- {#if result !== null}
 				<p>{@html result.data.extract}</p>
@@ -66,6 +82,25 @@
 			{/if}
 
 			<button on:click={handleOnClick}> Informationen zu Fährten </button>
+
+			<!-- Initiales Popup-Fenster -->
+			{#if showInitialPopup}
+				<div class="popup">
+					<div class="popup-content">
+						<h2>Tierspuren lesen – So geht's!</h2>
+						<p>
+							Hast du schon einmal Fußabdrücke im Schnee, Matsch
+							oder Sand gesehen? Das sind Tierspuren! Mit ein
+							bisschen Übung kannst du herausfinden, welches Tier
+							dort entlanggelaufen ist.
+						</p>
+						<p>Viel Erfolg!</p>
+						<button on:click={closeInitialPopup}
+							>Schließen</button
+						>
+					</div>
+				</div>
+			{/if}
 		</div>
 	</div>
 </div>
@@ -108,7 +143,7 @@
 	}
 
 	.card {
-		background-color: rgba(0, 0, 0, 0.7);
+		background-color: rgba(13, 21, 13, 0.9);
 		padding: 1.5rem;
 		border-radius: 10px;
 		text-align: center;
@@ -138,5 +173,52 @@
 		background: rgba(0, 0, 0, 0.8);
 		border-radius: 1rem;
 		margin-bottom: 2rem;
+	}
+
+	button {
+		background: #93421e;
+		color: white;
+		border: none;
+		padding: 0.7rem 1.5rem;
+		border-radius: 0.5rem;
+		cursor: pointer;
+		margin-top: 1rem;
+	}
+
+	/* Popup-Fenster */
+	.popup {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: rgba(0, 0, 0, 0.5);
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.popup-content {
+		color: white;
+		background: rgba(13, 21, 13);
+		padding: 2rem;
+		border-radius: 1rem;
+		text-align: center;
+		box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+		width: 35%;
+	}
+
+	.popup-content h2 {
+		margin-bottom: 1rem;
+	}
+
+	.popup-content button {
+		background: #93421e;
+		color: white;
+		border: none;
+		padding: 0.7rem 1.5rem;
+		border-radius: 0.5rem;
+		cursor: pointer;
+		margin-top: 1rem;
 	}
 </style>

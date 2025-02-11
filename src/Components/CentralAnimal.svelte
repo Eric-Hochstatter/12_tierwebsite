@@ -74,7 +74,7 @@
 		max-width: 800px;
 		color: white;
 		text-align: center;
-		background: rgba(0, 0, 0, 0.8);
+		background: rgba(5, 21, 5, 0.9);
 		border-radius: 1rem;
 		padding: 1rem;
 	}

@@ -24,19 +24,23 @@
 
 <style>
 	.grid-item {
-		display: flex;
-		justify-content: center;
+		display: grid;
+		align-content: center;
 		align-items: center;
-		flex-direction: column;
+		/* flex-direction: column; */
+		grid-template-rows: 4fr 1fr;
 		width: 6rem;
 		height: 6.5rem;
 		border-radius: 0.5rem;
 		cursor: pointer;
 		background: #e0e0e0;
 		transition: background 0.3s ease-in-out;
+
 	}
 
 	.grid-item img {
+		display: flex;
+		justify-self: center;
         width: 80%;
         height: auto;
         max-height: 4rem; /* Damit das Bild nicht zu groß wird */
@@ -44,15 +48,17 @@
         border-radius: 0.25rem;
     }
     .grid-item p {
-        margin: 0.7rem 0 0;
+		display: flex;
+		justify-self: center;
+        margin: 0 0 0;
         font-size: 0.9rem;
         color: black;
         font-weight: regular;
-    }
+		padding: 0.25rem;}
 
 	/* Wenn die Karte geklickt wurde, wird sie komplett schwarz */
 	.grid-item.blackout {
-		background: black;
+		background:  rgba(13, 21, 13, 0.9);
 	}
 
 	.grid-item.blackout img,

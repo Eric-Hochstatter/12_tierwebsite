@@ -67,7 +67,7 @@
 		justify-content: space-between;
 		align-items: center;
 		padding: 1rem 2rem;
-		background: rgba(0, 0, 0, 0.6);
+		background:  rgba(13, 21, 13, 0.9);
 		position: absolute;
 		top: 0;
 		left: 0;

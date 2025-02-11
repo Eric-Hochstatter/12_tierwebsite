@@ -11,6 +11,7 @@
 
     let visibleAnimals = animals.map(a => ({ ...a, isClicked: false })); // Kopie für Spielverwaltung
     let showPopup = false;
+    let showInitialPopup = true; // Initiales Popup anzeigen
     let isCorrectSelection = false;
     let lastAnimal = null;
 
@@ -55,6 +56,11 @@
         // Setze alle Karten zurück
         cardRefs.forEach(card => card.makeCardVisible());
     }
+
+    // Initiales Popup schließen
+    function closeInitialPopup() {
+        showInitialPopup = false;
+    }
 </script>
 
 <div class="game-container">
@@ -68,6 +74,17 @@
         {/each}
     </div>
 
+    <!-- Initiales Popup-Fenster -->
+    {#if showInitialPopup}
+        <div class="popup">
+            <div class="popup-content">
+                <h2>Willkommen zum Spiel!</h2>
+                <p>Finde das richtige Tier basierend auf den Fährten. Nutze Hinweise, sobald du diese benötist um das Tier zu erraten. Je weniger Hinweise du verwendest, desto mehr Punkte bekommst du.</p>
+                <button on:click={closeInitialPopup}>Spiel starten</button>
+            </div>
+        </div>
+    {/if}
+
     <!-- Popup-Fenster für Ergebnis -->
     {#if showPopup}
         <div class="popup">
@@ -75,8 +92,8 @@
                 <h2>{isCorrectSelection ? "✅ Richtig!" : "❌ Falsch!"}</h2>
                 <p>
                     {isCorrectSelection
-                        ? "Du hast das richtige Tier gefunden! 🎉"
-                        : "Leider falsch! Versuche es nochmal! 😢"}
+                        ? "Du hast das richtige Tier gefunden! 🎉 "
+                        : "Leider falsch! Starte einen neuen Versuch. 😢"}
                 </p>
                 <button on:click={resetGame}>Neues Spiel</button>
             </div>
@@ -115,11 +132,13 @@
     }
 
     .popup-content {
-        background: white;
+		color: white;
+        background: rgba(5, 21, 5);
         padding: 2rem;
         border-radius: 1rem;
         text-align: center;
         box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+		width: 35%;
     }
 
     .popup-content h2 {
@@ -127,7 +146,7 @@
     }
 
     .popup-content button {
-        background: #007bff;
+        background: #93421E;
         color: white;
         border: none;
         padding: 0.7rem 1.5rem;
