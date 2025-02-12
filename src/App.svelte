@@ -83,7 +83,7 @@ if (isMenuOpen) {
         width: 100%;
         color: white;
         height: 5rem;
-transition: background-color 0.3s ease;
+		transition: background-color 0.3s ease;
     }
 
     .logo {
@@ -117,7 +117,7 @@ transition: background-color 0.3s ease;
 
     .container-background {
         position: absolute;
-        background: url("titlescreen.jpg") no-repeat center center/cover;
+        background: linear-gradient(to top, rgba(16, 23, 17, 0.2), rgba(0, 0, 0, 0)), url("titlescreen.jpg") no-repeat center center/cover;
         filter: brightness(0.5); /* Abdunkeln auf 50% Helligkeit */
         height: 100vh;
         width: 100vw;
@@ -127,7 +127,6 @@ transition: background-color 0.3s ease;
     /* Media Queries für mobile Geräte */
     @media (max-width: 768px) {
         .header {
-            grid-template-columns: 1fr 1fr;
             height: auto;
             padding: 1rem;
         }
@@ -146,7 +145,7 @@ transition: background-color 0.3s ease;
         }
 
         nav {
-            grid-column: 1 / -1;
+            grid-column: 1 / span 10;
             display: none;
             flex-direction: column;
             align-items: center;
@@ -155,6 +154,8 @@ transition: background-color 0.3s ease;
 
         nav.open {
             display: flex;
+			justify-content: center;
+			width: 100%;
         }
 
         .header a {
