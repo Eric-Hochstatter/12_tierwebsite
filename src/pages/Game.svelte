@@ -109,6 +109,8 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        background: url('/path/to/your/background-image.jpg') no-repeat center center fixed;
+        background-size: cover;
     }
 
     .grid-container {
@@ -132,13 +134,13 @@
     }
 
     .popup-content {
-		color: white;
+        color: white;
         background: rgba(5, 21, 5);
         padding: 2rem;
         border-radius: 1rem;
         text-align: center;
         box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
-		width: 35%;
+        width: 35%;
     }
 
     .popup-content h2 {
@@ -153,5 +155,48 @@
         border-radius: 0.5rem;
         cursor: pointer;
         margin-top: 1rem;
+    }
+
+    /* Media Queries für mobile Geräte */
+    @media (max-width: 768px) {
+        .game-container {
+            overflow: auto; /* Scrollen ermöglichen */
+        }
+
+        .grid-container {
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.5rem;
+			margin-bottom: 3rem;
+        }
+
+        .popup-content {
+            width: 75%;
+            padding: 1rem;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .game-container {
+            overflow: auto; /* Scrollen ermöglichen */
+        }
+
+        .grid-container {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.5rem;
+        }
+
+        .popup-content {
+            width: 90%;
+            padding: 0.5rem;
+        }
+
+        .popup-content h2 {
+            font-size: 1.2rem;
+        }
+
+        .popup-content button {
+            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
+        }
     }
 </style>

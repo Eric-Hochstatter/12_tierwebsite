@@ -44,15 +44,6 @@
 		<div class="card">
 			<h2>Was sind Fährten?</h2>
 
-			<!-- {#if result !== null}
-				<p>{@html result.data.extract}</p>
-			{:else}
-				<p>
-					Hier soll die API eingebunden werden, die nützliche Hinweise
-					liefern soll
-				</p>
-			{/if} -->
-
 			{#if result !== null}
 				{#await result}
 					<div
@@ -220,5 +211,54 @@
 		border-radius: 0.5rem;
 		cursor: pointer;
 		margin-top: 1rem;
+	}
+
+	/* Media Queries für mobile Geräte */
+	@media (max-width: 768px) {
+		.main-content {
+			grid-template-columns: 1fr;
+			grid-template-rows: auto;
+			padding: 1rem;
+			height: auto;
+		}
+
+		.content-grid {
+			grid-template-columns: 1fr;
+			grid-column: 1 / -1;
+			grid-row: auto;
+			grid-gap: 1rem;
+		 	justify-content: center;
+            align-items: center;
+            margin-top: 10rem; /* Abstand zum oberen Bildschirmrand */
+        }
+
+		.card {
+			padding: 1rem;
+		}
+
+		.popup-content {
+			width: 75%;
+			padding: 1rem;
+		}
+	}
+
+	@media (max-width: 480px) {
+		.card h2 {
+			font-size: 1.2rem;
+		}
+
+		.card p {
+			font-size: 0.9rem;
+		}
+
+		button {
+			padding: 0.5rem 1rem;
+			font-size: 0.9rem;
+		}
+
+		.popup-content {
+			width: 75%;
+			padding: 0.5rem;
+		}
 	}
 </style>
