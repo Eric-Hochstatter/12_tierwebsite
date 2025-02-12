@@ -1,4 +1,6 @@
 <script>
+// @ts-nocheck
+
     import data from "../js/animaldata.js";
     import Card from "../components/Card.svelte";
     import CentralAnimal from "../components/CentralAnimal.svelte";
@@ -14,6 +16,8 @@
     let showInitialPopup = true; // Initiales Popup anzeigen
     let isCorrectSelection = false;
     let lastAnimal = null;
+    let score = 0;
+    let hintsUsed = 0;
 
     let cardRefs = [];
 
@@ -40,6 +44,9 @@
 
         // Sicherstellen, dass der Vergleich richtig läuft
         isCorrectSelection = lastAnimal.name.trim().toLowerCase() === centralAnimal.name.trim().toLowerCase();
+        if (isCorrectSelection) {
+            score += Math.max(0, 100 - hintsUsed * 10); // Punkte basierend auf verwendeten Hinweisen
+        }
         showPopup = true; // Zeige das Ergebnis
     }
 
@@ -52,6 +59,7 @@
         console.log("🔄 Neues Spiel gestartet. Neues Central Animal:", centralAnimal);
 
         visibleAnimals = animals.map(a => ({ ...a, isClicked: false }));
+        hintsUsed = 0; // Zurücksetzen der verwendeten Hinweise
 
         // Setze alle Karten zurück
         cardRefs.forEach(card => card.makeCardVisible());
@@ -61,17 +69,27 @@
     function closeInitialPopup() {
         showInitialPopup = false;
     }
+
+    // Hinweis verwenden
+    function useHint() {
+        hintsUsed += 1;
+    }
 </script>
 
 <div class="game-container">
     <!-- Zentrales Tier -->
-    <CentralAnimal centralAnimal={centralAnimal} />
+    <CentralAnimal centralAnimal={centralAnimal} on:useHint={useHint} />
 
     <!-- Grid mit den Tieren -->
     <div class="grid-container">
         {#each visibleAnimals as animal, index}
             <Card bind:this={cardRefs[index]} animal={animal} onToggle={handleToggle} />
         {/each}
+    </div>
+
+    <!-- Aktueller Score -->
+    <div class="score">
+        <p>Score: {score}</p>
     </div>
 
     <!-- Initiales Popup-Fenster -->
@@ -92,7 +110,7 @@
                 <h2>{isCorrectSelection ? "✅ Richtig!" : "❌ Falsch!"}</h2>
                 <p>
                     {isCorrectSelection
-                        ? "Du hast das richtige Tier gefunden! 🎉 "
+                        ? `Du hast das richtige Tier gefunden! 🎉 Du hast ${Math.max(0, 100 - hintsUsed * 10)} Punkte erhalten.`
                         : "Leider falsch! Starte einen neuen Versuch. 😢"}
                 </p>
                 <button on:click={resetGame}>Neues Spiel</button>
@@ -118,6 +136,12 @@
         grid-template-columns: repeat(6, 1fr);
         gap: 1rem;
         max-width: 800px;
+    }
+
+    .score {
+        margin-top: 1rem;
+        font-size: 1.5rem;
+        color: white;
     }
 
     /* Popup-Fenster */
@@ -166,7 +190,7 @@
         .grid-container {
             grid-template-columns: repeat(3, 1fr);
             gap: 0.5rem;
-			margin-bottom: 3rem;
+            margin-bottom: 3rem;
         }
 
         .popup-content {

@@ -1,4 +1,6 @@
 <script>
+    import { createEventDispatcher } from 'svelte';
+
     // Das zentrale Tier wird von `Game.svelte` gesetzt
     export let centralAnimal;
 
@@ -7,9 +9,12 @@
 
     let currentHintIndex = 0;
 
+    // Event-Dispatcher erstellen
+    const dispatch = createEventDispatcher();
+
     // Reaktionsblock, um das hints-Array zu aktualisieren, wenn sich centralAnimal ändert
     $: hints = [
-		centralAnimal?.Paw || "Kein Hinweis verfügbar",
+        centralAnimal?.Paw || "Kein Hinweis verfügbar",
         centralAnimal?.hint_1 || "Kein Hinweis verfügbar",
         centralAnimal?.hint_2 || "Kein Hinweis verfügbar",
         centralAnimal?.hint_3 || "Kein Hinweis verfügbar"
@@ -18,10 +23,12 @@
     // Funktionen zum Wechseln der Hinweise
     function nextHint() {
         currentHintIndex = (currentHintIndex + 1) % hints.length;
+        dispatch('useHint'); // Event auslösen, wenn ein Hinweis verwendet wird
     }
 
     function previousHint() {
         currentHintIndex = (currentHintIndex - 1 + hints.length) % hints.length;
+        dispatch('useHint'); // Event auslösen, wenn ein Hinweis verwendet wird
     }
 
     // Debugging, um sicherzustellen, dass `centralAnimal` richtig ankommt
@@ -37,11 +44,11 @@
     <!-- Hinweis-Container -->
     <div class="hint">
         <button on:click={previousHint}>
-			<img src={"/svgs/chevron-left.svg"} alt="Previous Hint" />
+            <img src={"/svgs/chevron-left.svg"} alt="Previous Hint" />
         </button>
         <p>{hints[currentHintIndex]}</p>
         <button on:click={nextHint}>
-            <img src="/public/svgs/chevron-right.svg" alt="Next Hint" />
+            <img src="/svgs/chevron-right.svg" alt="Next Hint" />
         </button>
     </div>
 </div>
@@ -107,7 +114,7 @@
     /* Media Queries für mobile Geräte */
     @media (max-width: 768px) {
         .central-container {
-			margin-top: 10rem;
+            margin-top: 10rem;
             width: 50%;
             padding: 0 1rem;
         }
