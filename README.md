@@ -32,7 +32,10 @@ Zusätzlich bietet die Webseite **Informationen über das Fährtenlesen**, einsc
 3. **Installiere die Abhängigkeiten:**  
    npm install
 
-4. **Starte die Entwicklungsumgebung:**  
+4. **Installiere den Ladebalken:**  
+   npm install ldrs
+
+5. **Starte die Entwicklungsumgebung:**  
    npm run dev
 
 ---
