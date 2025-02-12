@@ -152,20 +152,6 @@
 		font-size: 1rem;
 	}
 
-	.central-icon {
-		grid-row: 2;
-		grid-column: 5 / span 2;
-		justify-self: center;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		width: 10rem;
-		height: 10rem;
-		background: rgba(0, 0, 0, 0.8);
-		border-radius: 1rem;
-		margin-bottom: 2rem;
-	}
-
 	button {
 		background: #93421e;
 		color: white;
