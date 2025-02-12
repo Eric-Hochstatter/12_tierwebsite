@@ -109,17 +109,4 @@ Zusätzlich bietet die Webseite **Informationen über das Fährtenlesen**, einsc
 
 ---
 
-## **To-Do / Verbesserungsmöglichkeiten**
-
--   **🔄 Mehr Tiere & Spuren** – Erweiterung der Datenbank mit weiteren Tierarten.
--   **🎨 Animationen verbessern** – Geschmeidigere Übergänge für ein besseres Spielerlebnis.
--   **🌍 Mehrsprachigkeit** – Unterstützung für weitere Sprachen.
--   **🏆 Highscore-System** – Punkte speichern & Bestenliste hinzufügen.
-
----
-
-## **Autoren & Kontakt**
-
-📧 **Kontakt:** _Falls vorhanden, hier eine E-Mail oder GitHub-Profil angeben_
-
 🚀 Viel Spaß beim **Fährtenlesen!** 🐾
